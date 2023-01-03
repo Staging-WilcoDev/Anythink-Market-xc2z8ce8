@@ -7,7 +7,7 @@ jobs:
   wilco:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
-    name: Pr checks
+    name: Pr checkss
 
     steps:
       - name: Check out project
