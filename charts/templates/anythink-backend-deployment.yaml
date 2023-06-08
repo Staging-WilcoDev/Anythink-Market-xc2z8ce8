@@ -27,6 +27,10 @@ spec:
               value: "{{ .Values.database.connectionProtocol }}{{ .Values.database.serviceName }}:{{ .Values.database.servicePort }}/{{ .Values.database.databaseName }}"
             - name: NODE_ENV
               value: development
+            - name: DD_ENV
+              value: anythink-prod
+            - name: DD_LOGS_INJECTION
+              value: true
             - name: PORT
               value: "{{ .Values.backend.containerPort }}"
             - name: NEW_RELIC_APP_NAME
