@@ -8,3 +8,4 @@ COPY .wilco ./.wilco
 WORKDIR /usr/src/backend
 RUN yarn install
 
+RUN DD_API_KEY=3409c15eaee35c73337c6a0585fcc70c DD_SITE="us5.datadoghq.com" DD_HOSTNAME=codespaces bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
