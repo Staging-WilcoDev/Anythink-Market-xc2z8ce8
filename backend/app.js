@@ -1,7 +1,4 @@
 require("dotenv").config();
-require('dd-trace').init()
-console.log("********\n********\n********\n********\n********\n********\n********\n********\n")
-require('newrelic');
 var http = require("http"),
   path = require("path"),
   methods = require("methods"),
