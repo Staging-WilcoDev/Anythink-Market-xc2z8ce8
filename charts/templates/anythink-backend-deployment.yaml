@@ -21,8 +21,14 @@ spec:
         - args:
             - sh
             - -c
-            - "yarn seeds && yarn start"
+            - "DD_SITE=\"us5.datadoghq.com\" DD_HOSTNAME=anythink-backend bash -c \"$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)\" & yarn seeds && yarn start"
           env:
+            - name: DD_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-api-key
+                  key: datadog-api-key
+                  optional: true
             - name: MONGODB_URI
               value: "{{ .Values.database.connectionProtocol }}{{ .Values.database.serviceName }}:{{ .Values.database.servicePort }}/{{ .Values.database.databaseName }}"
             - name: NODE_ENV
