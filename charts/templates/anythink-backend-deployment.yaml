@@ -21,7 +21,7 @@ spec:
         - args:
             - sh
             - -c
-            - "DD_SITE=\"us5.datadoghq.com\" bash -c \"$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)\" && yarn seeds && yarn start"
+            - "DD_SITE=\"us5.datadoghq.com\" bash -c \"$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)\" & yarn seeds && yarn start"
           env:
             - name: DD_API_KEY
               valueFrom:
