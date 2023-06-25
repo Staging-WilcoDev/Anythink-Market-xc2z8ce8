@@ -1,4 +1,3 @@
-require('dd-trace').init();
 require("dotenv").config();
 var http = require("http"),
   path = require("path"),
