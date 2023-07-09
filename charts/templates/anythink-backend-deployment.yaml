@@ -18,7 +18,7 @@ spec:
         date: {{ now | unixEpoch | quote }}
     spec:
       containers:
-        - args:
+        - args: 
             - sh
             - -c
             - "yarn seeds && yarn start"
