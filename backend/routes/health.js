@@ -1,7 +1,7 @@
 var router = require("express").Router();
 
 router.get("/", (req, res, next) => {
-  res.sendStatus(300);
+  res.sendStatus(200);
 });
 
 module.exports = router;
