@@ -6,5 +6,5 @@ COPY .wilco ./.wilco
 
 # Pre-install npm packages
 WORKDIR /usr/src/backend
-RUN yarn installz
+RUN yarn install
 
