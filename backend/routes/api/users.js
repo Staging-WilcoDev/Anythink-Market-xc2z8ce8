@@ -6,6 +6,10 @@ var auth = require("../auth");
 const { sendEvent } = require("../../lib/event");
 
 router.get("/users", auth.required, function (req, res, next) {
+  if (req.payload.role !== 'admin') {
+    return res.sendStatus(403); 
+  }
+
   User.find()
     .then(function (users) {
       return res.json({
