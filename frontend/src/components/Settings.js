@@ -7,15 +7,20 @@ import {
   SETTINGS_PAGE_UNLOADED,
   LOGOUT,
 } from "../constants/actionTypes";
+import { useNavigate } from "react-router-dom";
+
 
 const SettingsForm = ({ currentUser, onSubmitForm }) => {
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUser) {
       setUser(currentUser);
+    } else {
+      navigate('/login');
     }
-  }, [currentUser]);
+  }, [currentUser, navigate]);
 
   const updateState = useCallback((field) => (ev) => {
     const newState = Object.assign({}, user, { [field]: ev.target.value });
@@ -107,8 +112,8 @@ const mapDispatchToProps = (dispatch) => ({
   onUnload: () => dispatch({ type: SETTINGS_PAGE_UNLOADED }),
 });
 
-class Settings extends React.Component {
-  render() {
+class Settings extends React.Component {   
+  render() {          
     return (
       <div className="settings-page">
         <div className="container page">
