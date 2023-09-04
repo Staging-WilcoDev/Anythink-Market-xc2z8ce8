@@ -1,5 +1,5 @@
 import ListErrors from "./ListErrors";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useNavigate } from "react";
 import agent from "../agent";
 import { connect } from "react-redux";
 import {
@@ -107,8 +107,16 @@ const mapDispatchToProps = (dispatch) => ({
   onUnload: () => dispatch({ type: SETTINGS_PAGE_UNLOADED }),
 });
 
-class Settings extends React.Component {
+class Settings extends React.Component {   
   render() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (!this.props.currentUser) {
+        navigate('/login');
+      }
+    }, [navigate]);
+
     return (
       <div className="settings-page">
         <div className="container page">
