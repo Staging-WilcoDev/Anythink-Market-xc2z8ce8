@@ -1,5 +1,5 @@
 import ListErrors from "./ListErrors";
-import React, { useCallback, useEffect, useState, useNavigate } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import agent from "../agent";
 import { connect } from "react-redux";
 import {
@@ -7,15 +7,20 @@ import {
   SETTINGS_PAGE_UNLOADED,
   LOGOUT,
 } from "../constants/actionTypes";
+import { useNavigate } from "react-router-dom";
+
 
 const SettingsForm = ({ currentUser, onSubmitForm }) => {
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUser) {
       setUser(currentUser);
+    } else {
+      navigate('/login');
     }
-  }, [currentUser]);
+  }, [currentUser, navigate]);
 
   const updateState = useCallback((field) => (ev) => {
     const newState = Object.assign({}, user, { [field]: ev.target.value });
@@ -108,15 +113,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Settings extends React.Component {   
-  render() {
-    const navigate = useNavigate();
-
-    useEffect(() => {
-      if (!this.props.currentUser) {
-        navigate('/login');
-      }
-    }, [navigate]);
-
+  render() {          
     return (
       <div className="settings-page">
         <div className="container page">
